@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AIF</string>
+
+    <!-- Main UI-->
+    <string name="title_activity_main">Iniciar sesión</string>
+    <string name="send_alert_button">Enviar alerta</string>
+    <string name="sending_alert_snack_bar">Enviando alerta</string>
+
+    <string name="title">Alerta de incendio</string>
+
+    <string name="step_1">Paso 1: asegurese que el GPS esté funcionando</string>
+    <string name="step_2">Paso 2: inice sesión con su cuenta de Facebook, Twitter o Google</string>
+    <string name="step_3">Paso 3: Presione el botón "Enviar alerta"</string>
+
+    <!-- Login UI -->
+    <string name="title_activity_login">Iniciar sesión</string>
+    <string name="login_text">Por favor, seleccione una de las siguientes opciones para iniciar sesión</string>
+
+    <string name="button_facebook">Facebook</string>
+    <string name="button_twitter">Twitter</string>
+    <string name="button_google">Google</string>
+
+    <!-- Options -->
+    <string name="action_settings">Configuración</string>
+    <string name="action_share">Compartir</string>
+    <string name="action_login">Iniciar sesión</string>
+
+    <string name="facebook_app_id">440077762841663</string>
+    <string name="progress_dialog">Iniciando sesión</string>
+
+</resources>
