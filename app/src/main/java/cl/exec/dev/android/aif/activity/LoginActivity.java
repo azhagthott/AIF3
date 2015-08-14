@@ -30,6 +30,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+import com.twitter.sdk.android.core.models.User;
 
 import java.util.Arrays;
 
@@ -135,15 +136,28 @@ public class LoginActivity extends AppCompatActivity implements
         });
 
 
+
+
+
+
+
         twitterLoginButton = (Button) findViewById(R.id.button_twitter);
+
         twitterLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(LOG_TAG, "Twitter Login click");
 
                 twitterAuthClient.authorize(LoginActivity.this, new Callback<TwitterSession>() {
+
+
                     @Override
                     public void success(Result<TwitterSession> result) {
+
+                        //User twitterUserName = result.data;
+                        //String twiiterUserEmail = twitterUserName.email;
+
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -155,7 +169,10 @@ public class LoginActivity extends AppCompatActivity implements
                         Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
                     }
                 });
-                finish();
+
+
+
+                        finish();
             }
         });
 

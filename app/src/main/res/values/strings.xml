@@ -4,13 +4,21 @@
     <!-- Main UI-->
     <string name="title_activity_main">Iniciar sesión</string>
     <string name="send_alert_button">Enviar alerta</string>
-    <string name="sending_alert_snack_bar">Enviando alerta</string>
+    <string name="sending_alert_snack_bar">Gracias totales!</string>
 
     <string name="title">Alerta de incendio</string>
 
     <string name="step_1">Paso 1: asegurese que el GPS esté funcionando</string>
     <string name="step_2">Paso 2: inice sesión con su cuenta de Facebook, Twitter o Google</string>
     <string name="step_3">Paso 3: Presione el botón "Enviar alerta"</string>
+
+
+    <!-- Accessibility UI-->
+    <string name="access_step_1">Activar GPS</string>
+    <string name="access_step_2">Inicia sesión</string>
+    <string name="access_step_3">Enviar alerta</string>
+
+
 
     <!-- Login UI -->
     <string name="title_activity_login">Iniciar sesión</string>
@@ -27,5 +35,8 @@
 
     <string name="facebook_app_id">440077762841663</string>
     <string name="progress_dialog">Iniciando sesión</string>
+    <string name="title_activity_setting">Configuración</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -7,22 +7,26 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.Menu;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import cl.exec.dev.android.aif.R;
 import cl.exec.dev.android.aif.connection.GetDataAsyncTask;
 
-public class MainActivity extends AppCompatActivity implements LocationListener{
+public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private static final String LOG = MainActivity.class.getName();
-    private static final String SHARE_HASTAG_PARQUES = "#YoCuidoMisParques";
     private static final String SHARE_HASTAG_BOSQUES = "#YoCuidoMisBosques";
 
     private Button sendAlertButton;
@@ -32,7 +36,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private double lng;
 
     private ShareActionProvider mShareActionProvider;
-    private String mForecast;
+
+    private LinearLayout gpsLayout;
+    private LinearLayout loginLayout;
+
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
             Log.d(LOG, "Provider " + provider + " has been selected.");
             onLocationChanged(location);
         } else {
-            Log.d(LOG , "No provider has been selected.");
+            Log.d(LOG, "No provider has been selected.");
         }
 
         sendAlertButton = (Button) findViewById(R.id.button_send_alert);
@@ -64,14 +72,35 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
                 Log.d(LOG, "lat: " + lat);
                 Log.d(LOG, "lng: " + lng);
+            }
+        });
 
+        gpsLayout = (LinearLayout) findViewById(R.id.gpsLayout);
+        gpsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        });
 
+        loginLayout = (LinearLayout) findViewById(R.id.loginLayout);
+        loginLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
-
-
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mShareActionProvider.setShareIntent(createShareIntent());
             }
         });
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -84,10 +113,9 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         locationManager.removeUpdates(this);
     }
 
-
     public void onLocationChanged(Location location) {
         lat = location.getLatitude();
-        lng= location.getLongitude();
+        lng = location.getLongitude();
     }
 
     @Override
@@ -107,44 +135,80 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+        mShareActionProvider.setShareIntent(createShareIntent());
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_share) {
+            Log.d(LOG, "action share pressed");
             return true;
         }
 
-        if (id == R.id.action_login) {
-            Intent i = new Intent(this, LoginActivity.class);
+        if (id == R.id.action_settings) {
+            Log.d(LOG, "action setting pressed");
+            Intent i = new Intent(this, SettingActivity.class);
             startActivity(i);
             return true;
         }
 
-        if (id == R.id.action_share) {
-            createShareForecastIntent();
-
-            Log.d(LOG ,"shared pressed");
-
+        if (id == R.id.action_login) {
+            Log.d(LOG, "action login pressed");
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private Intent createShareForecastIntent() {
+    public Intent createShareIntent(){
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT, "http://www.exec.cl - " + SHARE_HASTAG_BOSQUES);
         return shareIntent;
     }
+
+    private void changeShareIntent(Intent shareIntent) {
+        mShareActionProvider.setShareIntent(shareIntent);
+    }
+
+    private void changeTheme(double lat){
+
+        /*
+        Antofagasta
+            lat: -23
+
+        La Serena
+            lat: -30
+
+        Santiago
+            lat: -33
+
+        Concepcion
+            lat: -36
+
+        Pto Montt
+            lat: -41
+
+        Torres del Paine
+            lat: -50
+
+        Cabo de Hornos
+            lat: -54
+        */
+        if (lat > -30){
+            //
+        }
+
+
+    }
+
+
 }

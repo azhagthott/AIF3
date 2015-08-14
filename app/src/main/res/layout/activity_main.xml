@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/atacama"
+    android:background="@drawable/landscape"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -34,21 +34,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:textSize="32sp"
-                android:textColor="@color/deep_purple_50"
-                android:shadowColor="@color/text_shadow"
+                android:textColor="@color/grey_800"
+                android:shadowColor="@color/grey_700"
+                android:layout_marginBottom="24dp"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:fontFamily="sans-serif-light"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:fontFamily="sans-serif-light" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/gpsLayout"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_marginBottom="24dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/pin_lime_2"
+                android:contentDescription="@string/access_step_1"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textViewStep1"
@@ -56,79 +65,81 @@
                 android:layout_height="wrap_content"
                 android:text="@string/step_1"
                 android:textSize="24sp"
-                android:textColor="@color/deep_purple_50"
-                android:shadowColor="@color/text_shadow"
+                android:textColor="@color/grey_800"
+                android:shadowColor="@color/grey_700"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:fontFamily="sans-serif-light"
-                android:layout_below="@+id/textViewTitle"
-                android:layout_centerHorizontal="true"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/loginLayout"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginBottom="24dp"
+        android:background="@color/text_shadow_white"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/textViewStep2"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:text="@string/step_2"
-            android:textSize="24sp"
-            android:textColor="@color/deep_purple_50"
-            android:shadowColor="@color/text_shadow"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:fontFamily="sans-serif-light"
-            android:layout_below="@+id/textViewStep1"
-            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:src="@drawable/tw__ic_logo_default"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:src="@drawable/pin_teal_2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/access_step_2"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textViewStep2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/step_2"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:shadowColor="@color/grey_700"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-
-        <TextView
-            android:id="@+id/textViewStep3"
-            android:layout_width="149dp"
-            android:layout_height="wrap_content"
-            android:text="@string/step_3"
-            android:textSize="24sp"
-            android:textColor="@color/grey_200"
-            android:shadowColor="@color/text_shadow"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:fontFamily="sans-serif-light"
-            android:layout_below="@+id/textViewStep2"
-            android:layout_centerHorizontal="true" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:src="@drawable/tw__ic_logo_default"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:src="@drawable/pin_teal_2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/access_step_3"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textViewStep3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/step_3"
+            android:textSize="24sp"
+            android:textColor="@color/grey_800"
+            android:shadowColor="@color/grey_700"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -139,10 +150,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/send_alert_button"
-        android:fontFamily="sans-serif-light"
+        android:background="@color/blue_200"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
         android:layout_above="@+id/floatingActionButton"
         android:layout_centerHorizontal="true" />
-
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -161,10 +173,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="4dp"
-        android:layout_marginRight="4dp"
-        app:rippleColor="@color/green_500"
-        app:borderWidth="1dp" />
-
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="12dp"
+        app:rippleColor="@color/blue_700"
+        app:borderWidth="0dp"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
 
 </RelativeLayout>
